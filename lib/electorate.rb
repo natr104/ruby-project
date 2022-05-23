@@ -19,4 +19,8 @@ class Electorate
         puts "Held by: #{incumbent}. Leading party: #{leading} by a margin of #{margin} for a two-candidate-preferred percentage of #{tcp}% with a swing of #{swing}%."
         puts ""
     end
+
+    def self.all
+        @@all
+    end
 end
