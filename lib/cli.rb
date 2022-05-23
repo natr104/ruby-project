@@ -1,6 +1,6 @@
 class CLI
     def initialize
-        #blah
+        Scraper.new.scrape_electorates
     end
 
     def start

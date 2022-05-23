@@ -1,5 +1,5 @@
 class Electorate
-    attr_accessor :division, :state, :incumbent, :leading, :tcp, :margin, :swing
+    attr_accessor :division, :state, :incumbent, :leading, :tcp, :margin, :swing, :url
 
     @@all = []
 
