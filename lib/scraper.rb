@@ -30,4 +30,7 @@ class Scraper
 
 end
 
+Scraper.new.scrape_electorates
 
+my_electorate = Electorate.all[7]
+my_electorate.print_electorate

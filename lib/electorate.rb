@@ -13,10 +13,10 @@ class Electorate
 
     def print_electorate
         system("clear")
-        puts "========================"
+        puts "=================================="
         puts "Division of #{division} in #{state}."
-        puts "========================"
-        puts "Held by: #{incumbent}. Leading party: #{leading} by a margin of #{margin} for a two-candidate-preferred percentage of #{tcp}% with a swing of #{swing}%."
+        puts "=================================="
+        puts "Previously held by: #{incumbent}. Leading party: #{leading} by a margin of #{margin} votes. Two-party-preferred: #{tcp}% with a swing of #{swing}%."
         puts ""
     end
 
