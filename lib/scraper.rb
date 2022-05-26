@@ -28,9 +28,26 @@ class Scraper
         end
     end
 
+    def scrape_division_details url
+        page_url = BASE_URL + url
+        
+        doc = get_page(page_url)
+
+        doc.css("tbody")
+
+            candidate = doc.css('td[headers="fpCan"]').text.strip
+            party = doc.css('td[headers="fpPty"]').text.strip
+            #votes
+            #percentage
+            #swing
+            #status (prev member)
+    end
+
+
 end
 
 Scraper.new.scrape_electorates
 
-my_electorate = Electorate.all[7]
+my_electorate = Electorate.all[0]
 my_electorate.print_electorate
+p my_electorate
