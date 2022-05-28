@@ -28,19 +28,21 @@ class Scraper
         end
     end
 
-    def scrape_division_details url
+    def scrape_candidates url
         page_url = BASE_URL + url
         
         doc = get_page(page_url)
 
-        doc.css("tbody")
+        doc.css("tbody").collect do |candidate|
 
-            candidate = doc.css('td[headers="fpCan"]').text.strip
+            name = doc.css('td[headers="fpCan"]').text.strip
             party = doc.css('td[headers="fpPty"]').text.strip
-            #votes
-            #percentage
-            #swing
-            #status (prev member)
+            votes = doc.css('td[headers="fpVot"]').text.strip
+            pct = doc.css('td[headers="fpPty"]').text.strip  
+            swing = doc.css('td[headers="fpSwg"]').text.strip
+            status = doc.css('td[headers="fpSts"]').text.strip
+            #Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status)
+        end
     end
 
 
