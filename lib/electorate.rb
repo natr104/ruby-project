@@ -11,13 +11,8 @@ class Electorate
         self.class.all << self
     end
 
-    def print_electorate
-        system("clear")
-        puts "=================================="
-        puts "Division of #{division} in #{state}."
-        puts "=================================="
-        puts "Previously held by: #{incumbent}. Leading party: #{leading} by a margin of #{margin} votes. Two-party-preferred: #{tcp}% with a swing of #{swing}%."
-        puts ""
+    def self.find id
+        self.all[id-1]
     end
 
     def self.all

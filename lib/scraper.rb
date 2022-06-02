@@ -41,15 +41,16 @@ class Scraper
             pct = doc.css('td[headers="fpPty"]').text.strip  
             swing = doc.css('td[headers="fpSwg"]').text.strip
             status = doc.css('td[headers="fpSts"]').text.strip
-            #Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status)
+
+            Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status)
         end
     end
 
 
 end
 
-Scraper.new.scrape_electorates
+# Scraper.new.scrape_electorates
 
-my_electorate = Electorate.all[0]
-my_electorate.print_electorate
-p my_electorate
+# my_electorate = Electorate.all[0]
+# my_electorate.print_electorate
+# p my_electorate
