@@ -7,7 +7,9 @@ class CLI
 
     def start
         puts ""
+        puts "================================================================"
         puts "Welcome to the Australian Federal Election 2022 Results Tracker"
+        puts "================================================================"
         puts ""
         puts "Please choose from the options below:"
         puts ""
@@ -33,6 +35,14 @@ class CLI
         puts "=================================="
         puts "Previously held by: #{electorate.incumbent}. Leading party: #{electorate.leading} by a margin of #{electorate.margin} votes. Two-party-preferred: #{electorate.tcp}% with a swing of #{electorate.swing}%."
         puts ""
+    end
+
+    def print_candidates electorate
+        electorate.get_candidates
+        system("clear")
+        puts "=================================="
+        puts "Candidates for #{electorate.division} in #{electorate.state}:"
+        
     end
 
     def all_electorates
@@ -101,10 +111,6 @@ class CLI
 
     def list_electorates_by_state state
         puts "list of states goes here"
-    end
-
-    def print_candidates electorate
-        puts "list of candidates goes here"
     end
 
 end

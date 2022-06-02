@@ -11,6 +11,10 @@ class Electorate
         self.class.all << self
     end
 
+    def get_candidates
+        Scraper.new.scrape_candidates(self)
+    end
+
     def self.find id
         self.all[id-1]
     end

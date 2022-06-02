@@ -1,5 +1,5 @@
 class Candidate
-    attr_accessor :name, :party, :votes, :pct, :swing, :status
+    attr_accessor :name, :party, :votes, :pct, :swing, :status, :electorate
 
     @@all = []
 
@@ -10,6 +10,8 @@ class Candidate
 
         self.class.all << self
     end
+
+
 
     def self.find id
         self.all[id-1]

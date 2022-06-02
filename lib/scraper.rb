@@ -28,8 +28,8 @@ class Scraper
         end
     end
 
-    def scrape_candidates url
-        page_url = BASE_URL + url
+    def scrape_candidates electorate
+        page_url = BASE_URL + electorate.url
         
         doc = get_page(page_url)
 
@@ -42,7 +42,7 @@ class Scraper
             swing = doc.css('td[headers="fpSwg"]').text.strip
             status = doc.css('td[headers="fpSts"]').text.strip
 
-            Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status)
+            Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate)
         end
     end
 
