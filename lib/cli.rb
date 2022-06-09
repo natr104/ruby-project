@@ -1,6 +1,7 @@
 require_relative "./scraper.rb"
 
 class CLI
+
     def initialize
         Scraper.new.scrape_electorates
     end
@@ -20,7 +21,7 @@ class CLI
         if input == 1
             all_electorates
         elsif input == 2
-            list_electorates_by_state
+            state_electorates
         else 
             puts ""
             puts "Please select an option."
@@ -54,7 +55,7 @@ class CLI
         list_electorates(input)
 
         puts ""
-        puts "Which electorate would you like to see results for?"
+        puts "Which electorate would you like to see results from?"
         input = gets.strip.to_i
 
         electorate = Electorate.find(input)
@@ -75,6 +76,21 @@ class CLI
             puts "Please enter Y or N."
             all_electorates
         end
+
+    end
+
+    def state_electorates
+        states = ["NSW","VIC","QLD","WA","SA","TAS","ACT","NT"]
+        puts ""
+        puts "Which state or territory would you like to see results from?"
+        puts ""
+        states.each_with_index {|state, index|
+            puts "#{index+1}. #{state}"
+        }
+        input = gets.strip.to_i
+
+        
+
 
     end
 
@@ -109,7 +125,7 @@ class CLI
 
     end
 
-    def list_electorates_by_state state
+    def list_state_electorates state
         puts "list of states goes here"
     end
 
