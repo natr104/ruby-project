@@ -33,16 +33,17 @@ class Scraper
         
         doc = get_page(page_url)
 
-        doc.css("tbody").collect do |candidate|
+        doc.css("tbody tr").collect do |candidate|
 
-            name = doc.css('td[headers="fpCan"]').text.strip
-            party = doc.css('td[headers="fpPty"]').text.strip
-            votes = doc.css('td[headers="fpVot"]').text.strip
-            pct = doc.css('td[headers="fpPty"]').text.strip  
-            swing = doc.css('td[headers="fpSwg"]').text.strip
-            status = doc.css('td[headers="fpSts"]').text.strip
-
-            Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate)
+            name = candidate.css('td[headers="fpCan"]').text.strip
+            party = candidate.css('td[headers="fpPty"]').text.strip
+            votes = candidate.css('td[headers="fpVot"]').text.strip
+            pct = candidate.css('td[headers="fpPty"]').text.strip  
+            swing = candidate.css('td[headers="fpSwg"]').text.strip
+            status = candidate.css('td[headers="fpSts"]').text.strip
+            puts name
+            puts party
+            #Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate)
         end
     end
 

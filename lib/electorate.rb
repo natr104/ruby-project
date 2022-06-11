@@ -19,6 +19,10 @@ class Electorate
         self.all[id-1]
     end
 
+    def self.find_state state
+        self.all.select{|electorate| electorate.state == state}
+    end
+
     def self.all
         @@all
     end

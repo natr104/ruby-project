@@ -40,33 +40,34 @@ class CLI
 
     def print_candidates electorate
         electorate.get_candidates
-        system("clear")
+        #system("clear")
         puts "=================================="
         puts "Candidates for #{electorate.division} in #{electorate.state}:"
+        puts "=================================="
         
     end
 
     def all_electorates
         puts ""
-        puts "What number electorates would you like to see? 1-10, 11-20, 21-30, 31-40, 41-50, 51-60, 61-70, 71-80, 81-90, 91-100, 101-110, 111-120, 121-130, 131-140, 141-150 or 151?"
+        puts "Which electorates would you like to see? Enter a number from 1 to 151 to see a list of 10 electorates to choose from."
         puts ""
         input = gets.strip.to_i
 
-        list_electorates(input)
-
+        list_electorates(input, Electorate.all)
+        #refactor this to a new method
         puts ""
         puts "Which electorate would you like to see results from?"
         input = gets.strip.to_i
 
         electorate = Electorate.find(input)
-
+        #=================
         print_electorate(electorate)
-
+        #refactor to new method
         puts ""
         puts "Would you like to see more information about this electorate? Enter Y or N"
 
         input = gets.strip.downcase
-
+        
         if input == "y"
             print_candidates(electorate)
         elsif input == "n"
@@ -81,17 +82,22 @@ class CLI
 
     def state_electorates
         states = ["NSW","VIC","QLD","WA","SA","TAS","ACT","NT"]
-        puts ""
+        # puts ""
         puts "Which state or territory would you like to see results from?"
         puts ""
         states.each_with_index {|state, index|
             puts "#{index+1}. #{state}"
         }
         input = gets.strip.to_i
-
+        selected_state = states[input-1]
+        if selected_state
+            list_state_electorates(selected_state)
+        else
+            system("clear")
+            puts "Please select a state or territory."
+            state_electorates
+        end
         
-
-
     end
 
     def see_another_electorate
@@ -113,20 +119,44 @@ class CLI
     end
 
 
-    def list_electorates from_number
+    def list_electorates(from_number, electorates)
         
         puts ""
         puts "=================================="
         puts "Electorates #{from_number} - #{from_number+9}"
         puts "=================================="
-        Electorate.all[from_number-1, 10].each.with_index(from_number) do |electorate, index|
+        electorates[from_number-1, 10].each.with_index(from_number) do |electorate, index|
             puts "#{index}. #{electorate.division} in #{electorate.state}"
         end
 
     end
 
     def list_state_electorates state
-        puts "list of states goes here"
+        state_electorates = Electorate.find_state(state)
+        puts ""
+        puts "Which electorates in #{state} would you like to see? Enter a number from 1 - #{state_electorates.length} to see a list of 10 electorates to choose from."
+        puts ""
+        input = gets.strip.to_i
+        list_electorates(input, state_electorates)
+        puts ""
+        puts "Which electorate would you like to see results from?"
+        input = gets.strip.to_i
+        electorate = state_electorates[input-1]
+        print_electorate(electorate)
+        puts ""
+        puts "Would you like to see more information about this electorate? Enter Y or N"
+
+        input = gets.strip.downcase
+        
+        if input == "y"
+            print_candidates(electorate)
+        elsif input == "n"
+            see_another_electorate
+        else 
+            puts ""
+            puts "Please enter Y or N."
+            all_electorates
+        end
     end
 
 end
