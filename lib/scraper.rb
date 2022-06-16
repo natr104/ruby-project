@@ -1,6 +1,7 @@
 require "open-uri"
 require "nokogiri"
 require_relative "./electorate.rb"
+require_relative "./candidate.rb"
 
 class Scraper
     BASE_URL = "https://tallyroom.aec.gov.au/"
@@ -32,8 +33,8 @@ class Scraper
         page_url = BASE_URL + electorate.url
         
         doc = get_page(page_url)
-
-        doc.css("tbody tr").collect do |candidate|
+ 
+        doc.css("tbody tr").collect do |candidate| 
 
             name = candidate.css('td[headers="fpCan"]').text.strip
             party = candidate.css('td[headers="fpPty"]').text.strip
@@ -41,17 +42,10 @@ class Scraper
             pct = candidate.css('td[headers="fpPty"]').text.strip  
             swing = candidate.css('td[headers="fpSwg"]').text.strip
             status = candidate.css('td[headers="fpSts"]').text.strip
-            puts name
-            puts party
-            #Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate)
+
+            Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate) unless (name == "") #AEC first preference div does not have an id or class so there was no way to restrict nokogiri to just the first preference table, thus empty entries must be skipped when creating candidate instances
         end
     end
 
 
 end
-
-# Scraper.new.scrape_electorates
-
-# my_electorate = Electorate.all[0]
-# my_electorate.print_electorate
-# p my_electorate
