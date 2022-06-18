@@ -14,7 +14,11 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
+<<<<<<< HEAD
 Run ./bin/australian_election_2022 to start the application.
+=======
+TODO: Write usage instructions here
+>>>>>>> e6412b0472b78b97f4fcde56769ac456f1b62cd3
 
 ## Development
 
