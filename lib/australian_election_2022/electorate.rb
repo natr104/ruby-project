@@ -1,4 +1,4 @@
-class Electorate
+class AustralianElection2022::Electorate
     attr_accessor :division, :state, :incumbent, :leading, :tcp, :margin, :swing, :url
 
     @@all = []
@@ -12,7 +12,7 @@ class Electorate
     end
 
     def get_candidates
-        Scraper.new.scrape_candidates(self)
+        AustralianElection2022::Scraper.new.scrape_candidates(self)
     end
 
     def candidates

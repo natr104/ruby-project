@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/australian_election_2022"
+
+AustralianElection2022::CLI.new.start
