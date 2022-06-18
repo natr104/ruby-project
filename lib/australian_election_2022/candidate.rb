@@ -1,4 +1,4 @@
-class Candidate
+class AustralianElection2022::Candidate
     attr_accessor :name, :party, :votes, :pct, :swing, :status, :electorate
 
     @@all = []

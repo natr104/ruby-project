@@ -1,9 +1,7 @@
-require_relative "./scraper.rb"
-
-class CLI
+class AustralianElection2022::CLI
 
     def initialize
-        Scraper.new.scrape_electorates
+        AustralianElection2022::Scraper.new.scrape_electorates
     end
 
     def start
@@ -55,12 +53,12 @@ class CLI
         puts ""
         input = gets.strip.to_i
 
-        list_electorates(input, Electorate.all)
+        list_electorates(input, AustralianElection2022::Electorate.all)
 
         puts ""
         puts "Which electorate would you like to see results from?"
         input = gets.strip.to_i
-        electorate = Electorate.find(input)
+        electorate = AustralianElection2022::Electorate.find(input)
 
         print_electorate(electorate)
         see_more_information(electorate)
@@ -118,7 +116,7 @@ class CLI
     end
 
     def list_state_electorates state
-        state_electorates = Electorate.find_state(state)
+        state_electorates = AustralianElection2022::Electorate.find_state(state)
         puts ""
         puts "Which electorates in #{state} would you like to see? Enter a number from 1 - #{state_electorates.length} to see a list of 10 electorates to choose from."
         puts ""
@@ -151,5 +149,3 @@ class CLI
     end
 
 end
-
-CLI.new.start
