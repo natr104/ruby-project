@@ -39,13 +39,12 @@ class Scraper
             name = candidate.css('td[headers="fpCan"]').text.strip
             party = candidate.css('td[headers="fpPty"]').text.strip
             votes = candidate.css('td[headers="fpVot"]').text.strip
-            pct = candidate.css('td[headers="fpPty"]').text.strip  
+            pct = candidate.css('td[headers="fpPct"]').text.strip  
             swing = candidate.css('td[headers="fpSwg"]').text.strip
             status = candidate.css('td[headers="fpSts"]').text.strip
-
-            Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate) unless (name == "") #AEC first preference div does not have an id or class so there was no way to restrict nokogiri to just the first preference table, thus empty entries must be skipped when creating candidate instances
+            
+            electorate.candidates << Candidate.new(name: name, party: party, votes: votes, pct: pct, swing: swing, status: status, electorate: electorate) unless (name == "") #AEC first preference div does not have an id or class so there was no way to restrict nokogiri to just the first preference table, thus empty entries must be skipped when creating candidate instances
         end
     end
-
 
 end

@@ -7,12 +7,16 @@ class Electorate
         attributes.each do |key, value|
             send("#{key}=", value)
         end
-
+        @candidates = []
         self.class.all << self
     end
 
     def get_candidates
         Scraper.new.scrape_candidates(self)
+    end
+
+    def candidates
+        @candidates
     end
 
     def self.find id

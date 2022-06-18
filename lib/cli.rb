@@ -34,17 +34,19 @@ class CLI
         puts "=================================="
         puts "Division of #{electorate.division} in #{electorate.state}."
         puts "=================================="
-        puts "Previously held by: #{electorate.incumbent}. Leading party: #{electorate.leading} by a margin of #{electorate.margin} votes. Two-party-preferred: #{electorate.tcp}% with a swing of #{electorate.swing}%."
+        puts "Previously held by: #{electorate.incumbent}. Winning party: #{electorate.leading} by a margin of #{electorate.margin} votes. Two-party-preferred: #{electorate.tcp}% with a swing of #{electorate.swing}%."
         puts ""
     end
 
     def print_candidates electorate
         electorate.get_candidates
-        #system("clear")
         puts "=================================="
         puts "Candidates for #{electorate.division} in #{electorate.state}:"
         puts "=================================="
-        
+        puts "   Name   |   Party   |   Votes (%)   |   Swing   |   Status"
+        electorate.candidates.each_with_index do | candidate, index |
+            puts "#{index+1}. #{candidate.name} | #{candidate.party} | #{candidate.votes} (#{candidate.pct}%) | #{candidate.swing}% | #{candidate.status}"
+        end
     end
 
     def all_electorates
@@ -62,21 +64,7 @@ class CLI
         electorate = Electorate.find(input)
         #=================
         print_electorate(electorate)
-        #refactor to new method
-        puts ""
-        puts "Would you like to see more information about this electorate? Enter Y or N"
-
-        input = gets.strip.downcase
-        
-        if input == "y"
-            print_candidates(electorate)
-        elsif input == "n"
-            see_another_electorate
-        else 
-            puts ""
-            puts "Please enter Y or N."
-            all_electorates
-        end
+        see_more_information(electorate)
 
     end
 
@@ -143,6 +131,10 @@ class CLI
         input = gets.strip.to_i
         electorate = state_electorates[input-1]
         print_electorate(electorate)
+        see_more_information(electorate)
+    end
+
+    def see_more_information electorate
         puts ""
         puts "Would you like to see more information about this electorate? Enter Y or N"
 
@@ -150,12 +142,13 @@ class CLI
         
         if input == "y"
             print_candidates(electorate)
+            see_another_electorate
         elsif input == "n"
             see_another_electorate
         else 
             puts ""
             puts "Please enter Y or N."
-            all_electorates
+            see_more_information(electorate)
         end
     end
 
