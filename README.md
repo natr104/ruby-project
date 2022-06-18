@@ -1,6 +1,6 @@
 # AustralianElection2022
 
-Welcome to Australian Federal Election 2022 Results Tracker!
+Welcome to Australian Federal Election 2022 Results Tracker! This gem was created for my Phase 3 Ruby assignment with Academy Xi.
 
 ## Installation
 
