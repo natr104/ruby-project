@@ -1,6 +1,6 @@
 # AustralianElection2022
 
-Welcome to Australian Federal Election 2022 Results Tracker! This gem was created for my Phase 3 Ruby assignment with Academy Xi.
+Welcome to Australian Federal Election 2022 Results Tracker! This gem was created for my Phase 3 Ruby assignment with Academy Xi. It scrapes results data from the Australian Electoral Commission website for the House of Representatives in the 2022 federal election. You can view two-party-preferred and primary vote results for any of the 151 electorates. You may choose an electorate from all 151 electorates or choose a specific state or territory to select an electorate from.
 
 ## Installation
 
