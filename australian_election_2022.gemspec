@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["nathan.troy.dev@gmail.com"]
 
   spec.summary = "Australian Federal Election 2022 Results Tracker."
-  spec.description = "A CLI application to view results from the 2022 Australian Federal Election."
+  spec.description = "A CLI application to view results from the 2022 Australian Federal Election. Created for Academy Xi Ruby assignment."
   spec.homepage = "https://github.com/natr104/ruby-project"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
