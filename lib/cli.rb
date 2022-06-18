@@ -56,21 +56,19 @@ class CLI
         input = gets.strip.to_i
 
         list_electorates(input, Electorate.all)
-        #refactor this to a new method
+
         puts ""
         puts "Which electorate would you like to see results from?"
         input = gets.strip.to_i
-
         electorate = Electorate.find(input)
-        #=================
+
         print_electorate(electorate)
         see_more_information(electorate)
-
     end
 
     def state_electorates
         states = ["NSW","VIC","QLD","WA","SA","TAS","ACT","NT"]
-        # puts ""
+
         puts "Which state or territory would you like to see results from?"
         puts ""
         states.each_with_index {|state, index|
@@ -102,7 +100,7 @@ class CLI
         else 
             puts ""
             puts "Please enter Y or N."
-            start
+            see_another_electorate
         end
     end
 
