@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Australian Federal Election 2022 Results Tracker."
   spec.description = "A CLI application to view results from the 2022 Australian Federal Election."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage = "https://github.com/natr104/ruby-project"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
