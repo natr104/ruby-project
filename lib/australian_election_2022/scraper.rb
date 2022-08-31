@@ -1,5 +1,5 @@
 class AustralianElection2022::Scraper
-    BASE_URL = "https://tallyroom.aec.gov.au/"
+    BASE_URL = "https://results.aec.gov.au/27966/Website/"
     SEAT_SUMMARY_URL = "HouseSeatSummary-27966.htm"
 
     def get_page url = BASE_URL+SEAT_SUMMARY_URL
